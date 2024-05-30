@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const gardensRouter = require('./routes/gardens');
 const cropPlanRoutes = require('./routes/cropPlanRoutes');
-
+const guideRoutes = require('./routes/guideRoutes');
 // Middlewares
 app.use(express.json());
 
@@ -21,6 +21,7 @@ db.connect(err => {
 // Routes
 app.use("/api/gardens", gardensRouter);
 app.use("/api/crop-plans", cropPlanRoutes);
+app.use("/api/guides", guideRoutes); 
 
 // Running the server Port 7070
 const PORT = process.env.PORT || 4040;
