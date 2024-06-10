@@ -10,6 +10,7 @@ const cropPlanController = require('../controllers/cropPlanController');
  * @access  public
  */
 router.get('/', cropPlanController.getAllCropPlans);
+
 /**
  * @desc  Get CropPlan By Id
  * @route  /api/crop-plans/:id
@@ -17,7 +18,25 @@ router.get('/', cropPlanController.getAllCropPlans);
  * @access  public
  */
 router.get('/:id', cropPlanController.getCropPlanById);
+
 /**
+ * @desc  Get CropPlan By Garden Id
+ * @route  /api/crop-plans/gardens/:id
+ * @method  GET 
+ * @access  public
+ */
+router.get('/gardens/:garden_id', cropPlanController.getCropPlanByGardenId);
+
+/**
+ * @desc  Get CropPlan By Partner Id
+ * @route  /api/crop-plans/local_partners/:id
+ * @method  GET 
+ * @access  public
+ */
+router.get('/local_partners/:partner_id', cropPlanController.getCropPlanByPartnerId);
+
+/**
+ *
  * @desc  Create CropPlan
  * @route  /api/crop-plans
  * @method  POST  

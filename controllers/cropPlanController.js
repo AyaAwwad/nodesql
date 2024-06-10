@@ -9,6 +9,24 @@ const cropPlanController = {
         });
     },
 
+    getCropPlanByGardenId: (req, res) => {
+        const { garden_id } = req.params;
+        CropPlan.getByGId(garden_id, (err, cropPlan) => {
+            if (err) return res.status(500).json({ message: "Error finding crop plan: " + err.message });
+            if (!cropPlan) return res.status(404).json({ message: "Crop plan not found" });
+            res.json(cropPlan);
+        });
+    },
+
+    getCropPlanByPartnerId: (req, res) => {
+        const { partner_id } = req.params;
+        CropPlan.getByPId(partner_id, (err, cropPlan) => {
+            if (err) return res.status(500).json({ message: "Error finding crop plan: " + err.message });
+            if (!cropPlan) return res.status(404).json({ message: "Crop plan not found" });
+            res.json(cropPlan);
+        });
+    },
+
     getCropPlanById: (req, res) => {
         const { id } = req.params;
         CropPlan.getById(id, (err, cropPlan) => {
@@ -51,7 +69,9 @@ function validateCreateCropPlan(cropPlan) {
         cropType: Joi.string().trim().min(3).max(200).required(),
         plantingDate: Joi.date().required(),
         harvestDate: Joi.date().required(),
-        notes: Joi.string().allow('').max(500)
+        notes: Joi.string().allow('').max(500),
+        garden_id:  Joi.number().integer().required(), 
+        partner_id: Joi.number().integer().required() 
     });
     return schema.validate(cropPlan);
 }
@@ -61,9 +81,4 @@ function validateUpdateCropPlan(cropPlan) {
         cropType: Joi.string().trim().min(3).max(200),
         plantingDate: Joi.date(),
         harvestDate: Joi.date(),
-        notes: Joi.string().allow('').max(500)
-    });
-    return schema.validate(cropPlan);
-}
-
 module.exports = cropPlanController;

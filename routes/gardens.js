@@ -27,6 +27,8 @@ router.get("/:id", gardenController.getGardenById);
  */
 router.post("/", gardenController.createGarden);
 
+
+
 /**
  * @desc  Update A garden
  * @route  /api/gardens/:id
