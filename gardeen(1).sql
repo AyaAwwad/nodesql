@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 30 مايو 2024 الساعة 12:10
+-- Generation Time: 30 مايو 2024 الساعة 22:22
 -- إصدار الخادم: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -70,6 +70,30 @@ INSERT INTO `gardens` (`id`, `name`, `location`, `plotsAvailable`, `conditions`)
 (3, 'Jamal Abdulnasser Garden', 'City Nablus ', 8, 'sandy soil'),
 (7, 'Updated Name', '', 0, '');
 
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `guides`
+--
+
+CREATE TABLE `guides` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `content` text NOT NULL,
+  `author` varchar(100) NOT NULL,
+  `publicationDate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `guides`
+--
+
+INSERT INTO `guides` (`id`, `title`, `content`, `author`, `publicationDate`) VALUES
+(1, 'How to Grow new thing!', 'This guide provides detailed instructions on how to grow newww...', 'Aisha', '2024-01-07'),
+(3, 'Watering Tips for Your Garden', 'Proper watering techniques are essential for a healthy garden. This guide covers best practices for watering...', 'Mary Johnson', '2024-03-05'),
+(4, 'Organic Pest Control', 'Discover natural methods for controlling pests in your garden without the use of harmful chemicals...', 'Peter Brown', '2024-04-20'),
+(5, 'How to Grow Banana', 'This guide provides detailed instructions on how to grow banana...', 'Ayaa', '2024-01-08');
+
 --
 -- Indexes for dumped tables
 --
@@ -87,6 +111,12 @@ ALTER TABLE `gardens`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `guides`
+--
+ALTER TABLE `guides`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -101,6 +131,12 @@ ALTER TABLE `crop_plans`
 --
 ALTER TABLE `gardens`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `guides`
+--
+ALTER TABLE `guides`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
