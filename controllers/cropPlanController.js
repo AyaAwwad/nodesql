@@ -81,4 +81,7 @@ function validateUpdateCropPlan(cropPlan) {
         cropType: Joi.string().trim().min(3).max(200),
         plantingDate: Joi.date(),
         harvestDate: Joi.date(),
+        garden_id:  Joi.number().integer().required(), 
+        partner_id: Joi.number().integer().required()
+    })}
 module.exports = cropPlanController;
