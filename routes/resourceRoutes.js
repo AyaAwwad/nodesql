@@ -19,43 +19,27 @@ router.get('/', resourceController.getResources);
 router.get('/:id', resourceController.getResourceById);
 
 /**
- * @desc  Get resource by id
- * @route  /api/resource/gardens/:garden_id
- * @method  GET 
- * @access  public
- */
-router.get('/gardens/:garden_id', resourceController.getResourceByGardenId);
-
-/**
- * @desc  Get resource by id
- * @route  /api/resource/volunteers/:volunteer_id
- * @method  GET 
- * @access  public
- */
-router.get('/volunteers/:volunteer_id', resourceController.getResourceByVolunteerId);
-
-/**
  * @desc  Create New Resource
  * @route  /api/resources
  * @method  POST  
- * @access  public
+ * @access  protected
  */
 router.post('/', resourceController.createResource);
 
 /**
- * @desc  Update Resource
- * @route  /api/resources/:id
- * @method  PUT  
- * @access  public
+ * @desc Update Resource
+ * @route /api/resources/:id
+ * @method PUT
+ * @access protected
  */
-router.put('/:id', resourceController.updateResource);
+router.put('/:id',  resourceController.updateResource);
 
 /**
- * @desc  Delete Resource
- * @route  /api/resources/:id
- * @method  DELETE  
- * @access  public
+ * @desc Delete Resource
+ * @route /api/resources/:id
+ * @method DELETE
+ * @access protected
  */
-router.delete('/:id', resourceController.deleteResource);
+router.delete('/:id',  resourceController.deleteResource);
 
 module.exports = router;
