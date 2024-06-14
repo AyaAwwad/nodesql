@@ -1,11 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: 30 مايو 2024 الساعة 22:22
--- إصدار الخادم: 10.4.32-MariaDB
--- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +10,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `gardeen`
+-- Database: `gardeens`
 --
 
 -- --------------------------------------------------------
@@ -265,16 +257,21 @@ INSERT INTO `weather` (`id`, `location`, `temperature`, `humidity`, `precipitati
 
 
 
+CREATE TABLE `user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `password` VARCHAR(200) NOT NULL,
+  `location` VARCHAR(100),
+  `type` VARCHAR(50),
+  `interest` VARCHAR(100),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+);
 
-
-
-
-
-
---
--- Indexes for table `crop_plans`
---
-
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
 
 ALTER TABLE `crop_plans`
   ADD PRIMARY KEY (`id`);
@@ -336,7 +333,7 @@ ALTER TABLE `crop_plans`
 --
 ALTER TABLE `gardens`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+COMMIT;
 --
 -- AUTO_INCREMENT for table `guides`
 --
@@ -363,6 +360,7 @@ COMMIT;
 ALTER TABLE `weather`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

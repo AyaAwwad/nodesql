@@ -1,5 +1,5 @@
 const express = require('express');
-const app = express();
+const bodyParser = require('body-parser');
 const gardensRouter = require('./routes/gardens');
 const cropPlanRoutes = require('./routes/cropPlanRoutes');
 const guideRoutes = require('./routes/guideRoutes');
@@ -8,8 +8,14 @@ const VolunteerRoutes = require('./routes/VolunteerRoutes');
 const localPartnershipRoutes = require('./routes/localPartnershipRoutes');
 const weatherRoutes = require('./routes/weatherRoutes');
 const soilPestRoutes = require('./routes/soilPestRoutes');
-// Middlewares
+const UserRoute = require('./routes/UserRoute');
+
+
+const app = express();
+
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Database connection
 const db = require('./database');
@@ -32,6 +38,7 @@ app.use("/api/volunteers", VolunteerRoutes);
 app.use('/api/local-partners', localPartnershipRoutes);
 app.use('/api/weather', weatherRoutes);
 app.use('/api/soil_pest', soilPestRoutes);
+app.use('/api/user', UserRoute);
 
 // Running the server Port 4040
 const PORT = process.env.PORT || 4050;

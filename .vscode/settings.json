@@ -9,10 +9,10 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "gardeen",
+            "name": "gardeens",
+            "database": "gardeens",
             "username": "root",
-            "database": "gardeen",
-            "askForPassword": true
+            "password": ""
         }
     ]
 }
